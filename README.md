@@ -68,5 +68,5 @@ With this extension developers can delete protected branches.
 | Name                        | Description                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | repositoryname | The repository name in the teamproject where this pipeline is run |
-| branches |  The branches to delete, comma seperated. Needs to be 'release/<branch>' or 'hotfix<branch>' |
+| branches |  The branches to delete, comma seperated. Needs to be 'release/branchName' or 'hotfix/branchName' |
 | PAT | The Personal Access Token of the Developer (needs Code Read & Write scope) |
