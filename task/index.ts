@@ -55,10 +55,10 @@ async function run() {
 
       const permission = (await userConnection.get<IPermissionResonse>(`_apis/permissions/${securityNamespaceId}/${permissions}?tokens=${token}&alwaysAllowAdministrators=false&api-version=6.1-preview.2`)).result?.value;
       if (!permission || !permission[0]) {
-         throw `User that triggered the pipeline does not have 'Create branch' permissions on repository '${repositoryName}'.`;
+         throw `User that has set the PAT token does not have 'Create branch' permissions on repository '${repositoryName}'.`;
       }
       else {
-         console.log(`User that triggered the pipeline has 'Create branch' permissions on repository '${repositoryName}'.`);
+         console.log(`User that has set the PAT token has 'Create branch' permissions on repository '${repositoryName}'.`);
       }
 
       const foundBranches = (await agentConnection.get<IGitBranchesResponse>(`_apis/git/repositories/${gitRepoToBeChanged.id}/refs?api-version=6.0-preview.1`)).result?.value;
