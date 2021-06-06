@@ -1,0 +1,43 @@
+{
+  "name": "deleteprotectedbranch",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-rel": "npm install --production && tsc index.ts",
+    "build-test": "npm install && tsc",
+    "clean": "rm -rf ./node_modules/ && rm -rf ./coverage/ && rm -rf ./.nyc_output/ && rm -rf test-results.xml && find . -name '*.js' -delete && find . -name '*.js.map' -delete && rm -f package-lock.json && find . -name '.taskkey' -delete",
+    "lint": "eslint . --ext .ts",
+    "test": "npm run lint",
+    "test-ci": "npm run lint"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/tests/*.ts"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoostVoskuil/azure-devops-deleteprotectedbranch"
+  },
+  "author": "joost@foxhole.nl (joost@foxhole.nl)",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^3.1.2",
+    "typed-rest-client": "^1.8.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.28.0",
+    "source-map-support": "^0.5.19",
+    "sync-request": "^6.1.0",
+    "typescript": "^4.3.2"
+  }
+}
