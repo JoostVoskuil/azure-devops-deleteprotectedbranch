@@ -16,6 +16,7 @@ export interface IGitRepository {
     id: string;
     name: string;
     isDisabled: boolean;
+    defaultBranch: string
 }
 
 export interface IGitBranch {

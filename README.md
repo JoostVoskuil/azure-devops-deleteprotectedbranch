@@ -63,12 +63,12 @@ With this extension developers can delete protected branches.
   - The developer specifies the repostitory name, the branches to delete and the users' PAT token (that needs code read & write permission as scope).
   - The extensio uses the developers' PAT token to check if the developer has 'Create Branch' permission. So it assumes that when you provide the Create Branch Permission it's opposite permission (delete) is allowed.
   - The extension uses the system.accesstoken to delete the protected branch through the build service.
-  - It is only possible to delete 'release/*' or 'hotfix/*' branches.
 
 ## Arguments
 
 | Name                        | Description                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | repositoryname | The repository name in the teamproject where this pipeline is run |
+| onlygitflow | When false, every branch can be deleted. When true only 'release/branchName' or 'hotfix/branchName' branches can be specified |
 | branches |  The branches to delete, comma seperated. Needs to be 'release/branchName' or 'hotfix/branchName' |
 | PAT | The Personal Access Token of the Developer (needs Code Read & Write scope) |
