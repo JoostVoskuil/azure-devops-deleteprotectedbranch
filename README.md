@@ -8,47 +8,15 @@ Two tips:
 - Don’t use gitflow branching strategy. It is 2021!
 - Don’t use branches at all, go for trunk based development.
 
-Azure DevOps has a strange behavioral problem when it comes to protected branches. Protected branches cannot be deleted. With protected branches you want to make sure that you can only write to a branch through a pull request.
+Azure DevOps has a strange behavioral problem when it comes to branches and delete permissions:
+- Protected branches cannot be deleted. With protected branches you want to make sure that you can only write to a branch through a pull request.
+- Branches that are not yours cannot be deleted. When people leave the organisation old branches remains
 
-You can also use this task to delete somebody else his/her branches.
+Now you can enable the ‘Force push’ permission and then you are able to delete the branch. However, it also enabling editing of a file on that particulair branch in the Azure DevOps UI. The UI seems to force push all the time and it risks that developers are not mergin but just force push. Azure DevOps simply lacks the 'Delete branch' permission.
 
-However, enabling a policy prevents you from deleting the branch. Now you can enable the ‘Force push’ permission and then you are able to delete the branch. However, it also enabling editing of a file on that particulair branch in the Azure DevOps UI. The UI seems to force push all the time making it no longer a protected branch. Azure DevOps simply lacks the 'Delete branch' permission.
-
-So it is a matter of choice: If you want to protect your branches with policies for your developers, the developers simply cannot delete that branch anymore.
-
-Take the gitflow branching strategy (you shoudn’t use that in modern development):
-
-We make use of:
-
-- feature branches
-- release Branches (protected)
-- hotfix Branches (protected)
-- the develop branch (protected)
-- the main branch (protected)
-
-Flow:
-
-1. A developer creates a new feature branch: 'feature/feature1'
-    - This branch is not protected, so a direct push is possible.
-2. After feature1 is completed it is pushed onto the develop branch through a pull request.
-    - This deletes the feature/feature1 branch. This branch is not protected so it can be deleted.
-    - The develop branch is protected, so it can only be altered by a pull request.
-3. We want to create a release branch. 'release/releaseA' branch is created from the develop branch
-    - release/* has a policy set. We can only change a release branch through a pull request.
-    - We deploy to production.
-    - release/releaseA is pulled into main and develop.
-    - We set an annotated tag on the commit that went to production.
-    - release/releaseA branch should be deleted but we can't since it is protected.
-
-With this extension developers can delete protected branches.
+With this extension developers can delete protected branches and branches that are theirs without having force permissions. It uses the 'Projects Build Service' to delete the branch.
 
 ## Recommended setup
-
-- As an admin you create a cross-repo policy with wildcards. So you protect:
-  - 'main'
-  - 'develop'
-  - 'release/*'
-  - 'hotfix/*'
 
 - You need to disable setting 'Limit job authorization scope to referenced Azure DevOps repositories' in the Project Pipeline settings. If you don't want this, this task must be run using the target repository as a checkout.
 
