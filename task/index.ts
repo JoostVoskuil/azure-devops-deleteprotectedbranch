@@ -9,7 +9,7 @@ async function run() {
       const userToken = getAzureDevOpsInput('PAT');
       const teamProject = getAzureDevOpsVariable('System.TeamProject');
       const teamProjectId = getAzureDevOpsVariable('System.TeamProjectId');
-
+      const onlyGitflow = tl.getBoolInput('onlygitflow');
       const repositoryName = getAzureDevOpsInput('repositoryname');
       const branches = getAzureDevOpsInput('branches').split(',');
 
@@ -22,16 +22,18 @@ async function run() {
       const agentConnection = new AzureDevOpsConnection(collectionUri, agentToken, teamProject);
       const userConnection = new AzureDevOpsConnection(collectionUri, userToken);
 
-      for (const branch of branches) {
-         tl.debug(`Validating: ${branch}`);
-         if (!branch.toLowerCase().trim().startsWith('release/') && !branch.toLowerCase().trim().startsWith('hotfix/')) {
-            throw (`Branch ${branch.trim()} is not a valid branch. Branches should start with 'release/' or 'hotfix/')`);
-         }
-         else if (!branch.split("/").pop()) {
-            throw (`Branch ${branch.trim()} is not a valid branch. Branches should end with '/<branchname>' )`);
-         }
-         else {
-            tl.debug(`${branch} is a valid input.`);
+      if (onlyGitflow) {
+         for (const branch of branches) {
+            tl.debug(`Validating: ${branch}`);
+            if (!branch.toLowerCase().trim().startsWith('release/') && !branch.toLowerCase().trim().startsWith('hotfix/')) {
+               throw (`Branch ${branch.trim()} is not a valid branch. Branches should start with 'release/' or 'hotfix/')`);
+            }
+            else if (!branch.split("/").pop()) {
+               throw (`Branch ${branch.trim()} is not a valid branch. Branches should end with '/<branchname>' )`);
+            }
+            else {
+               tl.debug(`${branch} is a valid input.`);
+            }
          }
       }
 
@@ -82,7 +84,7 @@ async function run() {
       if (body.length > 0) {
          const results = (await agentConnection.create<IGitRefUpdateResultResponse>(`_apis/git/repositories/${gitRepoToBeChanged.id}/refs?api-version=6.0-preview.1`, body)).result?.value;
          tl.debug(JSON.stringify(results));
-         if (results) { 
+         if (results) {
             console.log('Result:');
             console.table(results, ["name", "success", "customMessage"]);
          }
@@ -91,8 +93,8 @@ async function run() {
          throw 'No branches to delete.'
       }
    }
-   catch (error) {
-      tl.setResult(tl.TaskResult.Failed, error, true);
+   catch (error: any) {
+      tl.setResult(tl.TaskResult.Failed, error.toString(), true);
    }
 }
 run();

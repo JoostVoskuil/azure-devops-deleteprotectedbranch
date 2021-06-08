@@ -23,6 +23,13 @@
             "required": true
         },
         {
+            "name": "onlygitflow",
+            "type": "boolean",
+            "label": "Branches to delete",
+            "helpMarkDown": "When enabled users can only delete release/* & hotfix/* branches. If false, user can delete every branch.",
+            "required": true
+        },
+        {
             "name": "branches",
             "type": "string",
             "label": "Branches to delete",

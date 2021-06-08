@@ -10,6 +10,8 @@ Two tips:
 
 Azure DevOps has a strange behavioral problem when it comes to protected branches. Protected branches cannot be deleted. With protected branches you want to make sure that you can only write to a branch through a pull request.
 
+You can also use this task to delete somebody else his/her branches.
+
 However, enabling a policy prevents you from deleting the branch. Now you can enable the ‘Force push’ permission and then you are able to delete the branch. However, it also enabling editing of a file on that particulair branch in the Azure DevOps UI. The UI seems to force push all the time making it no longer a protected branch. Azure DevOps simply lacks the 'Delete branch' permission.
 
 So it is a matter of choice: If you want to protect your branches with policies for your developers, the developers simply cannot delete that branch anymore.
