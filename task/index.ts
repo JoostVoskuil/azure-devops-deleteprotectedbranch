@@ -73,7 +73,7 @@ async function run() {
             tl.warning(`Cannot find branch '${fullBranchName}' in repository '${repositoryName}', skipping.`);
          }
          else if (gitRepoToBeChanged.defaultBranch === fullBranchName) {
-            tl.warning(`You cannot delete the defaultbranch '${fullBranchName}'s.`); 
+            tl.warning(`You cannot delete the defaultbranch '${fullBranchName}.`); 
          }
          else {
             const branchToDeleted: IGitRefUpdate = {
