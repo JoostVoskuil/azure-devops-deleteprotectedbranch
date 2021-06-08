@@ -1,4 +1,4 @@
-# Delete Branches that are protected by Policies
+# Delete Branches that are protected by Policies or that are not yours
 
 ## Introduction
 
