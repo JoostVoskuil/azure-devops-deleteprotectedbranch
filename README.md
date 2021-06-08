@@ -10,6 +10,8 @@ Two tips:
 
 Azure DevOps has a strange behavioral problem when it comes to protected branches. Protected branches cannot be deleted. With protected branches you want to make sure that you can only write to a branch through a pull request.
 
+You can also use this task to delete somebody else his/her branches.
+
 However, enabling a policy prevents you from deleting the branch. Now you can enable the ‘Force push’ permission and then you are able to delete the branch. However, it also enabling editing of a file on that particulair branch in the Azure DevOps UI. The UI seems to force push all the time making it no longer a protected branch. Azure DevOps simply lacks the 'Delete branch' permission.
 
 So it is a matter of choice: If you want to protect your branches with policies for your developers, the developers simply cannot delete that branch anymore.
@@ -61,12 +63,12 @@ With this extension developers can delete protected branches.
   - The developer specifies the repostitory name, the branches to delete and the users' PAT token (that needs code read & write permission as scope).
   - The extensio uses the developers' PAT token to check if the developer has 'Create Branch' permission. So it assumes that when you provide the Create Branch Permission it's opposite permission (delete) is allowed.
   - The extension uses the system.accesstoken to delete the protected branch through the build service.
-  - It is only possible to delete 'release/*' or 'hotfix/*' branches.
 
 ## Arguments
 
 | Name                        | Description                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | repositoryname | The repository name in the teamproject where this pipeline is run |
+| onlygitflow | When false, every branch can be deleted. When true only 'release/branchName' or 'hotfix/branchName' branches can be specified |
 | branches |  The branches to delete, comma seperated. Needs to be 'release/branchName' or 'hotfix/branchName' |
 | PAT | The Personal Access Token of the Developer (needs Code Read & Write scope) |
