@@ -25,7 +25,7 @@
         {
             "name": "onlygitflow",
             "type": "boolean",
-            "label": "Branches to delete",
+            "label": "Only support GitFlow",
             "helpMarkDown": "When enabled users can only delete release/* & hotfix/* branches. If false, user can delete every branch.",
             "required": true
         },
