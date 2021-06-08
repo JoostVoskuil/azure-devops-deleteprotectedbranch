@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
     "id": "deleteprotectedbranch",
-    "name": "Delete Branches that are Protected by Policies",
+    "name": "Delete branch without force push permission",
     "publisher": "foxholenl",
-    "description": "This extension provides the ability to delete a protected branch.",
+    "description": "This extension provides the ability to delete branches without force push permissions.",
     "version": "1.0.0",
     "public": false,
     "targets": [

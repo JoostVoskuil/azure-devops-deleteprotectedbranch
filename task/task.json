@@ -1,8 +1,8 @@
 {
     "id": "a0ed46ba-1563-416c-9e46-bf63dc5ed933",
     "name": "DeleteProtectedBranch",
-    "friendlyName": "Delete protected branches.",
-    "description": "Delete a branch that is protected by a policy without force push permission.",
+    "friendlyName": "Delete branch.",
+    "description": "Delete a branch without force push permission.",
     "helpMarkDown": "[More information](https://github.com/JoostVoskuil/azure-devops-deleteprotectedbranch)",
     "category": "Utility",
     "visibility": [
