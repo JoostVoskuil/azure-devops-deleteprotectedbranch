@@ -54,10 +54,8 @@ export class AzureDevOpsConnection {
             const result = await this.restClient.create<T>(resource, createObject);
             return result;
         }
-        catch (err) {
-            const error = `Error sending create to ${resource} to Azure DevOps API. Error: ${err.message}`;
-            console.log(error);
-            throw error;
+        catch (err: any) {
+            throw `Error sending create to ${resource} to Azure DevOps API. Error: ${err.message}`;
         }
     }
 
@@ -70,13 +68,11 @@ export class AzureDevOpsConnection {
         try {
             tl.debug(`REST GET: ${resource}`);
             const result = await this.restClient.get<T>(resource);
-            if (result.result === null) throw new Error("Not found");
+            if (result.result === null) throw new Error("Resource not found");
             return result;
         }
-        catch (err) {
-            const error = `Error sending get to ${resource} to Azure DevOps API. Error: ${err.message}`;
-            console.log(error);
-            throw error;
+        catch (err: any) {
+            throw `Error sending get to ${resource} to Azure DevOps API. Error: ${err.message}`;
         }
     }
 }

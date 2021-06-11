@@ -10,7 +10,7 @@ async function run() {
       const teamProject = getAzureDevOpsVariable('System.TeamProject');
       const teamProjectId = getAzureDevOpsVariable('System.TeamProjectId');
       const onlyGitflow = tl.getBoolInput('onlygitflow');
-      const repositoryName = getAzureDevOpsInput('repositoryname');
+      const repositoryName = (getAzureDevOpsInput('repositoryname')).trim();
       const branches = getAzureDevOpsInput('branches').split(',');
 
       tl.debug(`Branches to delete: ${branches}`);
