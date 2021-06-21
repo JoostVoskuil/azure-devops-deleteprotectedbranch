@@ -43,7 +43,7 @@ async function run() {
       }
 
       tl.debug(`Found ${gitRepositories?.length} gitrepositories in this project.`);
-      const gitRepoToBeChanged = gitRepositories.find(g => g.name === repositoryName);
+      const gitRepoToBeChanged = gitRepositories.find(g => g.name.toLowerCase() === repositoryName.toLowerCase());
       if (!gitRepoToBeChanged) {
          throw `Cannot find git repository ${repositoryName}`;
       }
@@ -68,7 +68,7 @@ async function run() {
       const body: IGitRefUpdate[] = [];
       for (const branch of branches) {
          const fullBranchName = `refs/heads/${branch.trim()}`
-         const branchToBeDeleted = foundBranches?.find(b => b.name === fullBranchName);
+         const branchToBeDeleted = foundBranches?.find(b => b.name.toLowerCase() === fullBranchName.toLowerCase());
          if (!branchToBeDeleted) {
             tl.warning(`Cannot find branch '${fullBranchName}' in repository '${repositoryName}', skipping.`);
          }
