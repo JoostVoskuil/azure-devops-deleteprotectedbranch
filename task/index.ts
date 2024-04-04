@@ -96,8 +96,8 @@ async function run() {
          throw 'No branches to delete.'
       }
    }
-   catch (error: any) {
-      tl.setResult(tl.TaskResult.Failed, error.toString(), true);
+   catch (error) {
+      tl.setResult(tl.TaskResult.Failed, error.message, true);
    }
 }
 run();

@@ -23,9 +23,6 @@ stages:
         targetType: 'inline'
         script: 'cd task && npm run build-test && npm run test-ci'
       displayName: 'Run Build for Test and Execute tests'
-    - task: WhiteSource Bolt@20
-      inputs:
-        cwd: '$(Build.SourcesDirectory)task/'
     - task: Bash@3
       inputs:
         targetType: 'inline'
