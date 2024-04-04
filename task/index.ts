@@ -97,7 +97,7 @@ async function run() {
       }
    }
    catch (error) {
-      tl.setResult(tl.TaskResult.Failed, error.message, true);
+      tl.setResult(tl.TaskResult.Failed, error, true);
    }
 }
 run();
