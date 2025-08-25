@@ -29,16 +29,16 @@
   "author": "joost@foxhole.nl (joost@foxhole.nl)",
   "license": "ISC",
   "dependencies": {
-    "azure-pipelines-task-lib": "^4.10.1",
-    "typed-rest-client": "^1.8.11",
+    "azure-pipelines-task-lib": "^5.2.1",
+    "typed-rest-client": "^2.1.0",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
-    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "eslint": "^9.34.0",
     "source-map-support": "^0.5.21",
     "sync-request": "^6.1.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.9.2"
   }
 }
